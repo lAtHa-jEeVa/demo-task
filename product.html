@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <link href="pdt.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    
+    <title>product preview</title>
+    </head>
+    <body>
+        
+    <div class="col">
+      <div class="box2">
+        <div class="col">
+          <div class="card">
+            
+            <!-- <h1>Display Image</h1> -->
+    <img id="imageDisplay" src="" alt="Uploaded Image"/>
+
+            <!-- <img id="imageDisplay" src="" alt="Uploaded Image"> -->
+
+            <div class="card-body bg-secondary1">
+              <h5 class="card-title" id="getpdt-name" style="font-size: 40px;">Product Name</h5>
+              <p class="card-text" id="getpdt-desc">Some quick example text to build on the card title and make up the bulk of the card's content.</p></div>
+            </div>
+            </div>
+            </div>
+            <div  style="height: 121px;" >
+              <div class="row font-weight-bold" style="margin: 0 20px;">
+                  <div class="col-5 text-center">
+                      <div>
+                          <p class="cost" style="font-size: 27px;" id="price">$</p>
+                      </div>
+                  </div>
+
+            <div class="btn-group1" role="group" aria-label="Basic example">
+              <button type="button"id= "sub" class="btn btn-secondary" onclick="minus()">-</button>
+              <input type="button" id="count" value="1" class="btn btn-secondary"/>
+              <button type="button" id="add" class="btn btn-secondary" onclick="plus()">+</button>
+              <span id="limitReach" class="" style="display:none;"></span>
+            </div>
+           
+      
+
+      <a href="index.html"  class="btn2" type="back to home">Back</a>
+      <a href="place.html" class="btn3" onclick="addToCart()" type="cart">Add To Cart</a>
+    </body>
+    </html>
+    <script>
+       
+        var limit = localStorage.getItem('product-max')
+    var price = localStorage.getItem('product-pri')
+    var currentPrice = price;
+    function getInfo() {
+
+        var limit = localStorage.getItem('product-max')
+        console.log(limit);
+        document.getElementById('getpdt-name').innerHTML = localStorage.getItem('product-item')
+        document.getElementById('getpdt-desc').innerHTML = localStorage.getItem('product-desc')
+        document.getElementById('price').innerHTML = localStorage.getItem('product-pri')
+
+        document.getElementById('count').value = 1;
+        const imageDisplay = document.getElementById('imageDisplay');
+        const imageData = localStorage.getItem('imageData')
+        if (imageData) {
+            imageDisplay.src = imageData;
+        } else {
+            imageDisplay.src = './img/no_img.jpg'; // Set a default image if there's no saved image data.
+        }
+    }
+    getInfo()
+
+    function plus() {
+        var count = parseInt(document.getElementById('count').value);
+        if (count < limit) {
+
+            document.getElementById('count').value = ++count;
+            currentPrice = count * price
+            document.getElementById('price').innerHTML = currentPrice;
+            document.getElementById('limitReach').style = "display:none;"
+        }
+        else{
+            
+            document.getElementById('limitReach').innerHTML = "Reached Max Limit"
+            document.getElementById('limitReach').style = "display:block; color:red;"
+        }
+    }
+    function minus() {
+        var count = parseInt(document.getElementById('count').value);
+        if (count > 1) {
+            document.getElementById('count').value = --count;
+            currentPrice = currentPrice - price
+            document.getElementById('price').innerHTML = currentPrice;
+            document.getElementById('limitReach').style = "display:none;"
+
+        }
+        else{
+            document.getElementById('limitReach').innerHTML = "Reached Min Limit"
+            document.getElementById('limitReach').style = "display:block; color:red;"
+        }
+    }
+
+    function addToCart() {
+        console.log(currentPrice);
+        localStorage.setItem('currentPrice', currentPrice)
+        localStorage.setItem('count', document.getElementById('count').value);
+
+    }
+        
+
+    </script>
+    

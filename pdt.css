@@ -1,0 +1,80 @@
+.body{
+    margin:0;
+    padding:0;
+}
+#price::before{
+    content: '$';
+}
+.btn2{
+    height: 29px;
+    border: 2px solid black;
+    width: 78px;
+    position: absolute;
+    top: 545px;
+    text-align: center;
+    background: black;
+    color: white;
+    left: 612px;
+}
+#price{
+    position: absolute;
+    top: -160px;
+    left: 565px;
+}
+.btn3{
+    position: absolute;
+    border: 2px solid lightskyblue;
+    left: 705px;
+    top: 486px;
+    width: 107px;
+    height: 35px;
+    text-align: center;
+    background: center;
+    color: black;
+}
+.box2{
+    background: saddlebrown;
+    margin-left: -15px;
+    width: 1262px;
+    height: 639px;
+    margin-top: -76px;
+}
+.card{
+    height: 117%;
+    width: 33%;
+    margin-left: 423px;
+    margin-top: 77px;
+    position: absolute;
+    top: 55px;
+}
+.bg-secondary1{
+    background: burlywood;
+    text-align: center;
+    /* height: 334px; */
+    position: absolute;
+    left: 1px;
+    top: 234px;
+    width: 414px;
+    height: 230px;
+}
+.btn-group1{
+    position: absolute;
+    left: 467px;
+    top: 482px;
+    border: 2px solid white;
+    background: white;
+}
+.add{
+    position: absolute;
+    left: 11px;
+}
+.coun{
+    position: absolute;
+    left: 11px;
+}
+.sub{
+    height: 32px;
+    position: absolute;
+    left: 200px;
+    top: 0px;
+}

@@ -1,0 +1,32 @@
+.body{
+    margin:0;
+    padding:0;
+}
+.btn5{
+    border: 2px solid black;
+    width: 128px;
+    height: 31px;
+    border-radius: 6px;
+    position: absolute;
+    top: 381px;
+    left: 719px;
+    color: black;
+}
+.btn5:hover{
+    background: red;
+    color:black;
+}
+.btn6{
+    border: 2px solid red;
+    width: 128px;
+    height: 31px;
+    border-radius: 6px;
+    position: absolute;
+    top: 381px;
+    left: 485px;
+    color: black;
+}
+.btn6:hover{
+background: blue;
+color:white;
+}

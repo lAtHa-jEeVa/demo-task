@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/> -->
+    <link href="style.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+
+    <title>product details</title>
+    </head>
+    <body>
+       <div class="box1">
+        <h1 class="h1">PRODUCT-DETAILS</h1>
+        <div class="boxA">
+          <form>
+            <div class="pdt">
+                <label>Product-Name</label>
+                <input type="text" id="pdt-name" placeholder="Enter your product name"/>
+            </div>
+
+            <div class="pdt">
+                <label>Product Description</label>
+                <input type="text" id="pdt-desc" placeholder="Enter your product-desc"/>
+            </div>
+
+            <div class="pdt">
+                <label>Max-limit</label>
+                 
+               <select id="pdt-max" name="Max-limit" class="mx-lm">
+                <option>size-limit</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+               </select>
+            </div>
+            <div class="pdt">
+                <label>Product Price</label>
+                <input type="number" id="pdt-price" placeholder="Enter your product pri" onchange="validatePrice()" />
+            </div>
+            
+            <div class="text-center">
+                <!-- <input type="button" class="btn" value="submit" onclick="productformvalidation()"/> -->
+                <!-- <input type="file" id="imageInput" onchange="preview_image(event)" accept="image/*"> -->
+            
+
+             <!-- <h1>Upload an Image</h1> -->
+             <input type="file" id="imageInput" accept="image/*">
+             <button id="saveButton" onclick="productformvalidation()">Save Image</button>
+         
+                
+
+          </form>
+          <div class="text-center">
+            <a href="product.html" class="btn1"> <button type="button" class="btn1">GO TO CART</button> </a>
+        </div>
+        </div>
+       </div>
+       <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+       <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+    </body>
+    </html>
+
+    <script>
+       function validatePrice(){
+        let Productprice=document.getElementById('pdt-price').value;
+         localStorage.setItem('product-pri',Productprice)
+         
+       }
+       
+      //  function validatePrice(){
+        // let Productprice=document.getElementById('pdt-price').value;
+      //   if(productprice>1){
+      //    Productprice = 1;
+      //   }else{
+      //     productprice = 0;
+      //   }
+      //  }
+
+     const imageInput = document.getElementById('imageInput');
+      const saveButton = document.getElementById('saveButton');
+
+      saveButton.addEventListener('click', function() {
+        const selectedImage = imageInput.files[0];
+
+        if (selectedImage) {
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            const imageData = event.target.result;
+            localStorage.setItem('imageData', imageData);
+
+            // Navigate to the next page
+            window.location.href = 'product.html';
+          };
+          reader.readAsDataURL(selectedImage);
+        } else {
+          alert('Please select an image before saving.');
+        }
+      });
+//       const reader = new FileReader();
+//   reader.onload = function(event) {
+//  const imageData = event.target.result;
+//          localStorage.setItem('imageData', imageData);
+// };
+//  reader.readAsDataURL(event.target.files[0])
+
+        function productformvalidation(){
+         let Productname=document.getElementById('pdt-name').value;
+         localStorage.setItem('product-item',Productname)
+        
+        let Productdescription=document.getElementById('pdt-desc').value;
+         localStorage.setItem('product-desc',Productdescription)
+
+         let Productmax=document.getElementById('pdt-max').value;
+         localStorage.setItem('product-max',Productmax)
+
+         let Productprice=document.getElementById('pdt-price').value;
+         localStorage.setItem('product-pri',Productprice)
+        }
+        
+
+      
+// function preview_image(event) {
+// var output=document.getElementById('imageInput');
+// output.src=URL.createObjectURL(event.target.files[0]);
+// output.onload=function(){
+//     URL.revokedObjectURL(output.src)// free memory
+// }
+
+// 
+    </script>
+
+
+
+
+
+
